@@ -139,7 +139,7 @@ MonoBehaviour:
   destroyOnHit: 1
   soundOnHit: 4
   delay: 0
-  effectOnHit: {fileID: 0}
+  effectOnHit: {fileID: 4884721895796255982, guid: b71c743fab71dc946843afd3461db36d, type: 3}
 --- !u!61 &3154046905702621717
 BoxCollider2D:
   m_ObjectHideFlags: 0

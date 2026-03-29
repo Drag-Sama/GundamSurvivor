@@ -41,7 +41,7 @@ public class EnnemieHeal : MonoBehaviour
 
     IEnumerator delayColor()
     {
-        sp.color = new Color(0.9f, 0.9f, 0.9f);
+        sp.color = new Color(0.8f, 0.8f, 0.8f);
         yield return new WaitForSeconds(0.1f);
         sp.color = new Color(1, 1, 1);
     }
