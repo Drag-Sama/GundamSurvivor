@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24810487bcffc614dafea2eaab89d840, type: 3}
+  m_Name: Char's Zaku II
+  m_EditorClassIdentifier: 
+  nameMS: Char's Zaku II
+  maxHealth: 120
+  speed: 7
+  boostSpeed: 15
+  shield: {fileID: 0}
+  bodySprite: {fileID: 21300000, guid: a46d4225a648e3e41bbf21b1ffbe442c, type: 3}
+  armTwoHandedSprite: {fileID: 21300000, guid: 14d5883bb9a49ac488b082a36d2ccbc4, type: 3}
+  armOneHandedSprite: {fileID: 21300000, guid: 1ea246f531e2a244ab692264fa4670d6, type: 3}
+  meleeSprites:
+  - {fileID: 748298847, guid: 3857008b7968f304a8df767c6ed6a5c8, type: 3}
+  - {fileID: 1027755218, guid: 3857008b7968f304a8df767c6ed6a5c8, type: 3}
+  - {fileID: -1951390484, guid: 3857008b7968f304a8df767c6ed6a5c8, type: 3}
+  - {fileID: 257327638, guid: 3857008b7968f304a8df767c6ed6a5c8, type: 3}
