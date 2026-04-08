@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnnemieHeal : MonoBehaviour
 {
     [SerializeField] int maxHeal;
-    [SerializeField] GameObject explosionEffect;
+    [SerializeField] List<GameObject> explosionEffect;
     [SerializeField] bool haveMsMovement;
     [SerializeField] bool haveTourelle;
     public int heal;
@@ -29,13 +29,21 @@ public class EnnemieHeal : MonoBehaviour
             if(explosionEffect != null)
             {
                 GetComponent<BoxCollider2D>().enabled = false;
-                Instantiate(explosionEffect, transform.position, transform.rotation);
+                InstantiateAllEffect();
                 StartCoroutine(delayDestroy(1.5f));
             }
             else //Au lieu de juste faire despawn la partie du vaisseau, on peut faire spawn une copie sans pv qui se detacherais du vaisseau et qui flotterais dans l'espace pendant un certain temps
             {
                 StartCoroutine(delayDestroy(0));
             }
+        }
+    }
+
+    void InstantiateAllEffect()
+    {
+        for(int i = 0; i < explosionEffect.Count; i++)
+        {
+            Instantiate(explosionEffect[i], transform.position, transform.rotation);
         }
     }
 

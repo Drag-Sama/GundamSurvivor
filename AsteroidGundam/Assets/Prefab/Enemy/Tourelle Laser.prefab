@@ -442,7 +442,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHeal: 75
-  explosionEffect: {fileID: 2778425081918073085, guid: 650790b220660d94e80597dd5ec82c23, type: 3}
+  explosionEffect:
+  - {fileID: 2778425081918073085, guid: 650790b220660d94e80597dd5ec82c23, type: 3}
+  - {fileID: 8951379219153992311, guid: f7368fa9d53f9ce4692bb07fb39ebace, type: 3}
   haveMsMovement: 0
   haveTourelle: 1
   heal: 0

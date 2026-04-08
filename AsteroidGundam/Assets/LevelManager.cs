@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     GameObject player;
     Equipement equipementManager;
+    [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject cameraPrefab;
     [SerializeField] GameObject uiPrefab;
     [SerializeField] GameObject endPage;
@@ -14,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = Instantiate(playerPrefab, transform.position, transform.rotation);
         equipementManager = GameObject.FindGameObjectWithTag("Equipement").GetComponent<Equipement>();
 
         var playerMain = player.GetComponent<PlayerMain>();

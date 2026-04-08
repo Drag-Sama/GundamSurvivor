@@ -14,11 +14,13 @@ public class PlayerMain : MonoBehaviour
     [SerializeField] SpriteRenderer weaponSprite;
 
     SpriteRenderer sp;
+    Rigidbody2D rb;
 
 
     private void Start()
     {
         sp = arm.GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void SetNewMS(MobileSuitClass selectedMs)
@@ -92,8 +94,16 @@ public class PlayerMain : MonoBehaviour
             
             sp.sprite = ms.meleeSprites[actualFrame];
             if (actualFrame < 2)
+            {
                 yield return new WaitForSeconds(0.12f);
+                 rb.AddForce(transform.up.normalized * 200);
+            }
+                
             else
+            {
+                yield return new WaitForSeconds(0.06f);
+                 rb.AddForce(transform.up.normalized * 100);
+            }
                 yield return new WaitForSeconds(0.06f);
             StartCoroutine(melee(actualFrame+=1));
         }

@@ -11,7 +11,7 @@ public class ParallaxEffect : MonoBehaviour
     [Range(0,1)]
     [SerializeField] float parallaxScale;
 
-    void Awake()
+    void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }

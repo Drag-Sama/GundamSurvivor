@@ -15,11 +15,15 @@ public class SmoothCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector3 cameraDisplacement = (mousePosition - target.position) * displacementMultiplier;
+        if (target)
+        {
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 cameraDisplacement = (mousePosition - target.position) * displacementMultiplier;
 
-        Vector3 cameraPosition = target.position + cameraDisplacement;
-        cameraPosition.z = zPosition;
-        transform.position = cameraPosition;
+            Vector3 cameraPosition = target.position + cameraDisplacement;
+            cameraPosition.z = zPosition;
+            transform.position = cameraPosition;
+        }
+        
     }
 }
