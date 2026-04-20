@@ -16,7 +16,9 @@ MonoBehaviour:
   isTwoHanded: 0
   delay: 1.5
   power: 50
-  bullet: {fileID: 7297286154876051651, guid: bfb3ae7914e204147a055f6338a7b551, type: 3}
+  magazineSize: 7
+  reloadTime: 12
+  bullet: {fileID: 7297286154876051651, guid: 25fc8366325b29a4290598748d65ecc0, type: 3}
   bulletSpeed: 0
   soundEffect: 1
   firePointPos: {x: 0.35, y: 1}

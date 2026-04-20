@@ -8,6 +8,7 @@ public class weapon : MonoBehaviour
     [SerializeField] SpriteRenderer weaponSprite;
     [SerializeField] WeaponClass weaponAct;
     public List<WeaponClass> weapons;
+    public List<int> magazines = new List<int>();
     public int idWeaponEquiped = 0;
 
     bool isFire = false;
@@ -78,15 +79,24 @@ public class weapon : MonoBehaviour
 
     IEnumerator Fire()
     {
-        if (!fireDelay && !attacking)
+        if (!fireDelay && !attacking && magazines[idWeaponEquiped] > 0)
         {
             
             GameObject bulletIns = Instantiate(weaponAct.bullet, firePoint.transform.position, this.transform.rotation);
+
             cameraShake.ShakeCamera(0.1f, 0.4f);
             gameManager.GetComponent<SoundManager>().playSound(weaponAct.soundEffect);
+            magazines[idWeaponEquiped]--;
             fireDelay = true;
+
             bulletIns.GetComponent<Rigidbody2D>().AddForce(this.transform.up * weaponAct.bulletSpeed);
             bulletIns.GetComponent<Bullet>().power = weaponAct.power;
+
+            if (magazines[idWeaponEquiped] == 0)
+            {
+                StartCoroutine(Reload(weapons[idWeaponEquiped].reloadTime, idWeaponEquiped));
+            }
+
             yield return new WaitForSeconds(weaponAct.delay);
             fireDelay = false;
             if (isFire && weaponAct.isAutomatic)
@@ -94,7 +104,15 @@ public class weapon : MonoBehaviour
                 StartCoroutine(Fire());
             }
 
+            
+
         }
         
+    }
+
+    IEnumerator Reload(float reloadTime, int weaponId)
+    {
+        yield return new WaitForSeconds(reloadTime);
+        magazines[weaponId] = weapons[weaponId].magazineSize;
     }
 }

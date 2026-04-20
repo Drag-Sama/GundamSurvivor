@@ -5,29 +5,36 @@ using UnityEngine;
 public class Funnel : MonoBehaviour
 {
     Transform position;
-    Transform target;
+    Transform funnelController;
+    List<Transform> targets = new List<Transform>();
     [SerializeField] float speed;
+    [SerializeField] int power;
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject firePoint;
     bool isAttacking = false;
     Vector2 nextPos;
 
-    public void Init(Transform nvTarget)
+    public void Init(Transform nvPosition, Transform nvFunnelController)
     {
-        position = nvTarget;  
+        position = nvPosition;
+        funnelController = nvFunnelController;
     }
 
-    public void Attack(Transform nvTarget)
+    public void AddTarget(Transform nvTarget)
     {
-        target = nvTarget;
+        targets.Add(nvTarget);
     }
 
     void Fire()
     {
-         float randomAngle = Random.Range(0f, 2 * Mathf.PI - float.Epsilon);
+        var actualTarget = targets[0];
+        GameObject bulletIns = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation, firePoint.transform);
+        bulletIns.GetComponent<Bullet>().power = power;
+
+        float randomAngle = Random.Range(0f, 2 * Mathf.PI - float.Epsilon);
         Vector2 pos = new Vector2(Mathf.Cos(randomAngle), Mathf.Sin(randomAngle)) * 4;
-        Debug.Log("TargetPos" + target.transform.position);
-        Debug.Log("PosRandom" + pos);
-        nextPos = new Vector2(target.transform.position.x + pos.x, target.transform.position.y + pos.y);
-        transform.right = target.position - transform.position; 
+        nextPos = new Vector2(actualTarget.transform.position.x + pos.x, actualTarget.transform.position.y + pos.y);
+        
     }
 
     IEnumerator FireDelay()
@@ -35,7 +42,7 @@ public class Funnel : MonoBehaviour
         isAttacking = true;
         Fire();
         yield return new WaitForSeconds(0.3f);
-        if(target)
+        if(targets.Count > 0 && targets[0])
             StartCoroutine(FireDelay());
         else
             isAttacking = false;
@@ -43,19 +50,30 @@ public class Funnel : MonoBehaviour
 
     void Update()
     {
-        if (position && !target)
+        if (position && targets.Count == 0)
         {
             transform.position = Vector3.MoveTowards(transform.position, position.position, speed * Time.deltaTime);
+            transform.rotation = funnelController.rotation;
         }
-        if (target && !isAttacking)
-        { //A chaque tire tu changes de position sur un cercle
-           StartCoroutine(FireDelay());
-        }
-        if(target && isAttacking)
-        {//TODO ajouter la vitesse de la cible en plus de speed * 2 * Time.delaTime
-            transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * 2 * Time.deltaTime);
-        }
-
+        if(targets.Count > 0)
+        {
+            if (targets[0])
+            {
+                if (!isAttacking)
+                {
+                    StartCoroutine(FireDelay());
+                }
+                else
+                {
+                    transform.position = Vector3.MoveTowards(transform.position, nextPos, speed * 2 * Time.deltaTime);
+                    transform.up = targets[0].position - transform.position;
+                }
+            }
+            else
+            {
+                targets.RemoveAt(0);
+            }
             
+        }   
     }
 }

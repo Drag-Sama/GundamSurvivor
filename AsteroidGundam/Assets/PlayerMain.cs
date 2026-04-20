@@ -51,6 +51,13 @@ public class PlayerMain : MonoBehaviour
     {
         arm.GetComponent<weapon>().weapons = weapons;
         arm.GetComponent<weapon>().InitWeapon();
+
+        List<int> magazines = new List<int>();
+        foreach (var weapon in weapons)
+        {
+            magazines.Add(weapon.magazineSize);
+        }
+        arm.GetComponent<weapon>().magazines = magazines;
     }
 
     public void updateArmSprite(WeaponClass weapon)

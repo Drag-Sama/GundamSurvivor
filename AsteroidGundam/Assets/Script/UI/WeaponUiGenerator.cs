@@ -14,7 +14,7 @@ public class WeaponUiGenerator : MonoBehaviour
         for (int i = 0; i < playerWeapons.weapons.Count; i++)
         {
             GameObject weaponIns = Instantiate(WeaponUi, anchorPoints[i].transform);
-            weaponIns.GetComponent<WeaponUI>().setWeapon(playerWeapons.weapons[i]);
+            weaponIns.GetComponent<WeaponUI>().setWeapon(playerWeapons.weapons[i], playerWeapons, i);
         }
     }
 }

@@ -278,9 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeal: 300
   explosionEffect:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7307980894762041080, guid: c7e0db51252b6254db17f3e47beafb97, type: 3}
   haveMsMovement: 0
   haveTourelle: 0
   heal: 0

@@ -7,6 +7,8 @@ public class WeaponClass : ScriptableObject
     public bool isTwoHanded;
     public float delay;
     public int power;
+    public int magazineSize;
+    public float reloadTime;
     public GameObject bullet;
     public float bulletSpeed;
     public int soundEffect;

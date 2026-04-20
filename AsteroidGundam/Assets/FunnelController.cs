@@ -8,33 +8,33 @@ public class FunnelController : MonoBehaviour
     [SerializeField] List<GameObject> funnelPoints;
     [SerializeField] GameObject funnelPrefab;
     List<GameObject> funnels = new List<GameObject>();
-    GameObject target = null;
+    List<GameObject> targets = new List<GameObject>();
 
     void Start(){
         foreach (var point in funnelPoints)
         {
             GameObject funnelIns = Instantiate(funnelPrefab, point.transform.position, point.transform.rotation);
-            funnelIns.GetComponent<Funnel>().Init(point.transform);
+            funnelIns.GetComponent<Funnel>().Init(point.transform, this.transform);
             funnels.Add(funnelIns);
         }
     }
 
 
 
-    void Attack()
+    void Attack(GameObject target)
     {
         foreach(var funnel in funnels)
         {
-            funnel.GetComponent<Funnel>().Attack(target.transform);
+            funnel.GetComponent<Funnel>().AddTarget(target.transform);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ennemie") && !target)
+        if (collision.CompareTag("Ennemie"))
         {
-            target = collision.gameObject;
-            Attack();
+            targets.Add(collision.gameObject);
+            Attack(collision.gameObject);
         }
     }
 }

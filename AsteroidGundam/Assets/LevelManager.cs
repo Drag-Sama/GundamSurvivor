@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     Equipement equipementManager;
     [SerializeField] GameObject playerPrefab;
     [SerializeField] GameObject cameraPrefab;
+    [SerializeField] GameObject miniMapCameraPrefab;
     [SerializeField] GameObject uiPrefab;
     [SerializeField] GameObject endPage;
 
@@ -24,6 +25,9 @@ public class LevelManager : MonoBehaviour
 
         var cameraIns = Instantiate(cameraPrefab, player.transform.position, player.transform.rotation);
         cameraIns.GetComponentInChildren<SmoothCamera>().Init(player);
+
+        var miniMapCameraIns = Instantiate(miniMapCameraPrefab, player.transform.position, player.transform.rotation);
+        miniMapCameraIns.GetComponentInChildren<SmoothCamera>().Init(player);
 
         uiIns = Instantiate(uiPrefab, transform.position, transform.rotation);
         uiIns.GetComponent<PlayerUiManager>().Init(player, cameraIns.GetComponent<Camera>());

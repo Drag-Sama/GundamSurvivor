@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isAutomatic: 0
   isTwoHanded: 1
-  delay: 1.5
+  delay: 1
   power: 80
+  magazineSize: 5
+  reloadTime: 10
   bullet: {fileID: 2043995770812447299, guid: cdf00ee68420f2348b6fa3f1584122b0, type: 3}
   bulletSpeed: 1600
   soundEffect: 6

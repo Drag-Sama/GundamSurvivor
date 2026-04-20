@@ -16,7 +16,6 @@ public class Shake : MonoBehaviour
     {
         Vector3 startPosition = cameraHolder.transform.position;
         float elapsedTime = 0f;
-        Debug.Log("Start " + duration);
         while(elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -25,6 +24,5 @@ public class Shake : MonoBehaviour
             yield return null;
         }
         cameraHolder.transform.position = startPosition;
-        Debug.Log("End " + duration);
     }
 }
