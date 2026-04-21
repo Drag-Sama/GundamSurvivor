@@ -4,6 +4,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public int power;
+    public bool ignoreShield;
     [SerializeField] bool isEnnemie;
     //OnHit
     [SerializeField] bool destroyOnHit;

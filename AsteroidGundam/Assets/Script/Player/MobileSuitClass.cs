@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Weapon", menuName = "MobileSuit / Create new Mobile Suit")]
+[CreateAssetMenu(fileName = "MobileSuit", menuName = "MobileSuit / Create new Mobile Suit")]
 public class MobileSuitClass : ScriptableObject
 {
     public string nameMS;

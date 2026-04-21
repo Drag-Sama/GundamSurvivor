@@ -8,6 +8,13 @@ public class PlayerXp : MonoBehaviour
     int actualXp;
     int level;
 
+    LevelManager levelManager;
+
+    private void Start()
+    {
+        levelManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<LevelManager>();
+    }
+
     public void AddXp(int xp)
     {
         actualXp += xp;
@@ -22,5 +29,6 @@ public class PlayerXp : MonoBehaviour
         actualXp =- xpNeeded;
         xpNeeded = (int)(xpNeeded * 1.2f);
         level++;
+        levelManager.LevelUp();
     }
 }

@@ -16,8 +16,12 @@ public class Shield : MonoBehaviour
     {
         if (collision.CompareTag("Bullet"))
         {
-            sm.playSound(3);
-            Destroy(collision.gameObject);
+            if (!collision.GetComponent<Bullet>().ignoreShield)
+            {
+                sm.playSound(3);
+                Destroy(collision.gameObject);
+            }
+            
         }
     }
 }

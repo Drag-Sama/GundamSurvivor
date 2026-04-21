@@ -1359,6 +1359,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a042b552c27f9ca4791785b502c54752, type: 2}
   - {fileID: 11400000, guid: b9867e8bdf5b5b54eae70da68432da74, type: 2}
   - {fileID: 11400000, guid: e9a0a0cc94b9a5a4cb27ee130d63fc39, type: 2}
+  - {fileID: 11400000, guid: 6d0995cfebe38e9448bbb11cea214cde, type: 2}
   msPage: {fileID: 530653940}
   msButton: {fileID: 7938647721037385012, guid: 473792fc16cb621418a03a14a5eb4241, type: 3}
   mobilesSuits:

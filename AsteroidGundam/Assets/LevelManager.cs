@@ -45,4 +45,9 @@ public class LevelManager : MonoBehaviour
         int nbEnemeyDestroyed = GetComponent<EnemyManager>().nbEnemyDestroyed;
         endPageIns.GetComponent<EndPage>().InitUI(nbEnemeyDestroyed * 200, nbEnemeyDestroyed);
     }
+
+    public void LevelUp()
+    {
+        uiIns.GetComponent<PlayerUiManager>().InitUpgradeUi();
+    }
 }
