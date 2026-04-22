@@ -7,21 +7,10 @@ public class PlayerStats : MonoBehaviour
     PlayerHeal playerHeal;
     PlayerMovement playerMovement;
 
-    //Base MS Stats
-    int maxHealthBase;
-    float speedBase;
-    float boostSpeedBase;
-
     //Actual MS Stats
     int maxHealth;
     float speed;
     float boostSpeed;
-
-    //Base Weapons Stats
-    List<float> delayBase = new List<float>();
-    List<int> powerBase = new List<int>();
-    List<int> magazineSizeBase = new List<int>();
-    List<float> reloadTimeBase = new List<float>();
 
     //Actual Weapons Stats
     List<float> delay = new List<float>();
@@ -38,17 +27,20 @@ public class PlayerStats : MonoBehaviour
 
     public void InitNewMS(MobileSuitClass ms)
     {
-        maxHealthBase = ms.maxHealth;
-        speedBase = ms.speed;
-        boostSpeedBase = ms.boostSpeed;
+        maxHealth = ms.maxHealth;
+        speed = ms.speed;
+        boostSpeed = ms.boostSpeed;
     }
 
-    public void InitNewWeapon(WeaponClass weapon)
+    public void InitNewWeapons(List<WeaponClass> weapons)
     {
-        delayBase.Add(weapon.delay);
-        powerBase.Add(weapon.power);
-        magazineSizeBase.Add(weapon.magazineSize);
-        reloadTimeBase.Add(weapon.reloadTime);
+        foreach (var weapon in weapons)
+        {
+            delay.Add(weapon.delay);
+            power.Add(weapon.power);
+            magazineSize.Add(weapon.magazineSize);
+            reloadTime.Add(weapon.reloadTime);
+        }
     }
 
     //MS Set/Update

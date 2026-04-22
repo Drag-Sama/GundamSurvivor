@@ -23,6 +23,10 @@ public class LevelManager : MonoBehaviour
         playerMain.SetNewMS(equipementManager.GetMs());
         playerMain.InitNewWeapons(equipementManager.GetWeapons());
 
+        var playerStats = player.GetComponent<PlayerStats>();
+        playerStats.InitNewMS(equipementManager.GetMs());
+        playerStats.InitNewWeapons(equipementManager.GetWeapons());
+
         var cameraIns = Instantiate(cameraPrefab, player.transform.position, player.transform.rotation);
         cameraIns.GetComponentInChildren<SmoothCamera>().Init(player);
 
@@ -49,5 +53,12 @@ public class LevelManager : MonoBehaviour
     public void LevelUp()
     {
         uiIns.GetComponent<PlayerUiManager>().InitUpgradeUi();
+        Time.timeScale = 0;
+    }
+
+    public void UpgradeSelected()
+    {
+        uiIns.GetComponent<PlayerUiManager>().DisabledUpgradeUi();
+        Time.timeScale = 1;
     }
 }

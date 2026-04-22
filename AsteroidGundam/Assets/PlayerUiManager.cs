@@ -19,5 +19,11 @@ public class PlayerUiManager : MonoBehaviour
     public void InitUpgradeUi()
     {
         upgradeUi.SetActive(true);
+        upgradeUi.GetComponent<UpgradeController>().InitNewUpgrades(3);
+    }
+
+    public void DisabledUpgradeUi()
+    {
+        upgradeUi.SetActive(false);
     }
 }

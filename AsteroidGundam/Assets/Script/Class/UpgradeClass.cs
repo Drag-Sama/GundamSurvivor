@@ -74,7 +74,7 @@ public class UpgradeClass : ScriptableObject
     {
         if(upgradeValues[upgradeType] < 1)
         {
-            return baseValue * (1 + (upgradeValues[upgradeType] * (1+rarity)));
+            return baseValue * (1 + (upgradeValues[upgradeType] * (1+rarity))); //TODO faudrait prendre la valeur de base et la multiplier
         }
         else
         {
