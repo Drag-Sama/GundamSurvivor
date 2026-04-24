@@ -70,15 +70,15 @@ public class UpgradeClass : ScriptableObject
         }
     }
 
-    public float GetCalculatedValue(float baseValue) //Renvoie la valeur de la stats après l'amélioration
+    public float GetCalculatedValue(float actualValue, float baseValue) //Renvoie la valeur de la stats après l'amélioration
     {
         if(upgradeValues[upgradeType] < 1)
         {
-            return baseValue * (1 + (upgradeValues[upgradeType] * (1+rarity))); //TODO faudrait prendre la valeur de base et la multiplier
+            return actualValue + baseValue * (upgradeValues[upgradeType] * (1+rarity)); //TODO faudrait prendre la valeur de base et la multiplier
         }
         else
         {
-            return baseValue + upgradeValues[upgradeType] * (1 + rarity);
+            return actualValue + upgradeValues[upgradeType] * (1 + rarity);
         }
     }
 }

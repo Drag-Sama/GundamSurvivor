@@ -7,6 +7,9 @@ public class PlayerStats : MonoBehaviour
     PlayerHeal playerHeal;
     PlayerMovement playerMovement;
 
+    MobileSuitClass msBase;
+    List<WeaponClass> weaponsBase = new List<WeaponClass>();
+
     //Actual MS Stats
     int maxHealth;
     float speed;
@@ -27,6 +30,7 @@ public class PlayerStats : MonoBehaviour
 
     public void InitNewMS(MobileSuitClass ms)
     {
+        msBase = ms;
         maxHealth = ms.maxHealth;
         speed = ms.speed;
         boostSpeed = ms.boostSpeed;
@@ -34,6 +38,8 @@ public class PlayerStats : MonoBehaviour
 
     public void InitNewWeapons(List<WeaponClass> weapons)
     {
+        weaponsBase = weapons;
+
         foreach (var weapon in weapons)
         {
             delay.Add(weapon.delay);
@@ -113,25 +119,25 @@ public class PlayerStats : MonoBehaviour
         switch (upgrade.upgradeType)
         {
             case 0: //MaxHealth
-                SetMaxHealth((int)upgrade.GetCalculatedValue(maxHealth));
+                SetMaxHealth((int)upgrade.GetCalculatedValue(maxHealth, msBase.maxHealth));
                 break;
             case 1: //Speed
-                SetSpeed(upgrade.GetCalculatedValue(speed));
+                SetSpeed(upgrade.GetCalculatedValue(speed, msBase.speed));
                 break;
             case 2: //BoostSpeed
-                SetBoostSpeed(upgrade.GetCalculatedValue(boostSpeed));
+                SetBoostSpeed(upgrade.GetCalculatedValue(boostSpeed, msBase.boostSpeed));
                 break;
             case 3: //Delay
-                SetDelay(upgrade.GetCalculatedValue(delay[upgrade.weaponId]), upgrade.weaponId);
+                SetDelay(upgrade.GetCalculatedValue(delay[upgrade.weaponId], weaponsBase[upgrade.weaponId].delay), upgrade.weaponId);
                 break;
             case 4: //Power
-                SetPower((int)upgrade.GetCalculatedValue(power[upgrade.weaponId]), upgrade.weaponId);
+                SetPower((int)upgrade.GetCalculatedValue(power[upgrade.weaponId], weaponsBase[upgrade.weaponId].power), upgrade.weaponId);
                 break;
             case 5: //MagazineSize
-                SetMagazineSize((int)upgrade.GetCalculatedValue(magazineSize[upgrade.weaponId]), upgrade.weaponId);
+                SetMagazineSize((int)upgrade.GetCalculatedValue(magazineSize[upgrade.weaponId], weaponsBase[upgrade.weaponId].magazineSize), upgrade.weaponId);
                 break;
             case 6: //ReloadTime
-                SetReloadTime(upgrade.GetCalculatedValue(reloadTime[upgrade.weaponId]), upgrade.weaponId);
+                SetReloadTime(upgrade.GetCalculatedValue(reloadTime[upgrade.weaponId], weaponsBase[upgrade.weaponId].reloadTime), upgrade.weaponId);
                 break;
 
         }

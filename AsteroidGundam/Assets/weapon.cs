@@ -15,6 +15,7 @@ public class weapon : MonoBehaviour
     bool fireDelay = false;
     public bool attacking = false;
     PlayerMain pm;
+    PlayerStats ps;
 
     GameObject gameManager;
     Shake cameraShake;
@@ -23,6 +24,7 @@ public class weapon : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
         pm = GetComponentInParent<PlayerMain>();
+        ps = GetComponentInParent<PlayerStats>();
         weaponAct = weapons[idWeaponEquiped];
         weaponSprite.sprite = weapons[idWeaponEquiped].sprite;
         firePoint.transform.localPosition = weapons[idWeaponEquiped].firePointPos;
@@ -90,14 +92,14 @@ public class weapon : MonoBehaviour
             fireDelay = true;
 
             bulletIns.GetComponent<Rigidbody2D>().AddForce(this.transform.up * weaponAct.bulletSpeed);
-            bulletIns.GetComponent<Bullet>().power = weaponAct.power;
+            bulletIns.GetComponent<Bullet>().power = ps.GetPower(idWeaponEquiped);
 
             if (magazines[idWeaponEquiped] == 0)
             {
-                StartCoroutine(Reload(weapons[idWeaponEquiped].reloadTime, idWeaponEquiped));
+                StartCoroutine(Reload(ps.GetReloadTime(idWeaponEquiped), idWeaponEquiped));
             }
 
-            yield return new WaitForSeconds(weaponAct.delay);
+            yield return new WaitForSeconds(ps.GetDelay(idWeaponEquiped));
             fireDelay = false;
             if (isFire && weaponAct.isAutomatic)
             {
@@ -113,6 +115,6 @@ public class weapon : MonoBehaviour
     IEnumerator Reload(float reloadTime, int weaponId)
     {
         yield return new WaitForSeconds(reloadTime);
-        magazines[weaponId] = weapons[weaponId].magazineSize;
+        magazines[weaponId] = ps.GetMagazineSize(weaponId);
     }
 }
