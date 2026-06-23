@@ -61,4 +61,9 @@ public class LevelManager : MonoBehaviour
         uiIns.GetComponent<PlayerUiManager>().DisabledUpgradeUi();
         Time.timeScale = 1;
     }
+
+    public void OpenDialogue(string[] dialogue)
+    {
+        uiIns.GetComponentInChildren<DialogueSystem>().SetDialogue(dialogue);
+    }
 }

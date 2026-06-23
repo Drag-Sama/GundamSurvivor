@@ -866,6 +866,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FunnelController
       objectReference: {fileID: 0}
+    - target: {fileID: 7844141888218820663, guid: 940534b9a3afc96419954246873dcf2a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 940534b9a3afc96419954246873dcf2a, type: 3}
 --- !u!4 &5564779965121430575 stripped

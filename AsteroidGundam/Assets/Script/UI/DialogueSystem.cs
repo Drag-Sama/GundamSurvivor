@@ -15,8 +15,9 @@ public class DialogueSystem : MonoBehaviour
 
     [SerializeField] float wordSpeed;
 
-    private void Start()
+    public void SetDialogue(string[] newDialogue)
     {
+        dialogue = newDialogue;
         Talk();
     }
 

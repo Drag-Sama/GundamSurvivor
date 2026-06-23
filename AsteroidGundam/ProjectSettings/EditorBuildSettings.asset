@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 7b9054266f373704bb392a27c1d84838
   - enabled: 1
-    path: Assets/Scenes/TestLevel.unity
+    path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SurvivorLevel.unity
+    guid: b6cfa0bd15c57d748b11ff269bb5f6ae
   m_configObjects: {}
